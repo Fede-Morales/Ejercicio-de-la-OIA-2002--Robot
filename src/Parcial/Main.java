@@ -1,6 +1,8 @@
 package Parcial;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -36,10 +38,27 @@ public class Main {
 			}
 		}
 		
-		robot.getPosicion();
 		
+		//robot.getPosicion();
+		crearArchivo(robot);
 	
 		
+	}
+	public static void crearArchivo(Robot robot) {
+		try {
+			PrintWriter pw = new PrintWriter(new File("Salida.Out"));
+			String papope= "";
+			for(int i=0; i<robot.getPosicion().length;i++) {
+				papope+=robot.getPosicion()[i]+" ";
+			}
+			papope.trim();
+			pw.print(papope);
+			System.out.println("Se genero con exito el archivo");
+			pw.close();
+		} catch (Exception e) {
+			System.out.println("No se pudo crear el archivo ");
+		}
+
 	}
 }	
 

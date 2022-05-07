@@ -24,6 +24,7 @@ public class TestAvanzar {
 				robot.cambiarSentido(proximaIndicacion.charAt(1)+"");
 			}
 		}
+		
 	
 		int[] n= {3,5};
 		assertArrayEquals(n,robot.getPosicion());

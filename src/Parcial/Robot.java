@@ -21,8 +21,6 @@ public class Robot {
 	}
 
 	public int[] getPosicion() {
-		System.out.print(posicion[0] + " ");
-		System.out.println(posicion[1]);
 		
 		return this.posicion;
 
@@ -88,7 +86,7 @@ public class Robot {
 		int indiceActual = sentidos.indexOf(Character.toUpperCase(this.getSentido()));
 		int indiceFinal = (indiceActual + cantidadRotaciones) % 4;
 		this.setSentido(sentidos.get(indiceFinal));
-		System.out.println("Orientacion actual:" + this.getSentido());
+		//System.out.println("Orientacion actual:" + this.getSentido());
 	}
 
 }
