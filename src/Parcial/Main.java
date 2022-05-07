@@ -1,54 +1,41 @@
 package Parcial;
 
+import java.io.File;
+import java.util.Scanner;
+
+
 public class Main {
 
 	public static void main(String[] args) {
-		Tablero t = new Tablero(4,4);
-		Robot p = new Robot(1,1,'N');
-		
-		Archivos a = new Archivos("Entrada.in","Salida.out");
-		
-	
-		a.crearArchivo();
+		String primeraLinea = "";
+		String segundaLinea = "";
 		
 		
-		
-	}	
-}
-
-class Tablero{
-	
-	private int tablero[][];
-	
-	public Tablero(int a, int b) {
-		tablero = new int[a][b];
-		this.tablero = tablero;
-		for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-            	this.tablero[i][j] = j+1; 
-            }
+		try {
+			Scanner sc = new Scanner(new File("Entrada.in"));
+			primeraLinea = sc.nextLine();
+			segundaLinea = sc.nextLine();
+			sc.close();
+		}catch(Exception e) {
+			System.out.println("Ocurrio un error: "+e);
 		}
-	}
-
-
-	public void setTablero(int a, int b) {
-		for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-            	this.tablero[i][j] = j; 
-            }
-		}
-	}
+		String[] dIR = primeraLinea.split(" ");
+		
+		Robot robot = new Robot(dIR[0], dIR[1], dIR[2].charAt(0), dIR[3], dIR[4]);
+		
+		String proximaIndicacion = "";
+		String indicaciones = segundaLinea;
+		for(int i=2; i<=indicaciones.length(); i=i+2) {
+			proximaIndicacion = indicaciones.substring(i-2, i);
+			robot.Avanzar(indicaciones.charAt(1)+"");
+			}
+		System.out.println(robot.getSentido());
+		robot.getPosicion();
 	
-	public void getTablero() {
-		for (int i = 0; i < tablero.length; i++) { 
-            for (int j = 0; j < tablero[i].length; j++) {
-            	if(j == 0) {
-            		System.out.println();
-            	}
-                System.out.print(tablero[i][j]);
-            }
-		}
+		
 	}
-}
+}	
+
+
 
 
