@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		String primeraLinea = "";
 		String segundaLinea = "";
-		
 		
 		try {
 			Scanner sc = new Scanner(new File("Entrada.in"));
@@ -25,6 +24,9 @@ public class Main {
 		
 		String proximaIndicacion = "";
 		String indicaciones = segundaLinea;
+		if(indicaciones.length()/2 > 125) {
+			throw new Exception("No se permiten mas de 125 instrucciones.Cantidad de instruccuiones actuales: "+indicaciones.length()/2);
+		}
 		for(int i=2; i<=indicaciones.length(); i=i+2) {
 			proximaIndicacion = indicaciones.substring(i-2, i);
 			if(proximaIndicacion.charAt(0) == 'A') {
@@ -40,6 +42,8 @@ public class Main {
 		
 	}
 }	
+
+
 
 
 

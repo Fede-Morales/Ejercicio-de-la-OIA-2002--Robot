@@ -9,17 +9,22 @@ public class Robot {
 	private int limiteX;
 	private int limiteY;
 
-	public Robot(String x, String y, char c, String n, String m) {
+	public Robot(String x, String y, char c, String n, String m) throws Exception {
 		this.posicion[0] = Integer.parseInt(x);
 		this.posicion[1] = Integer.parseInt(y);
 		this.limiteX = Integer.parseInt(n);
 		this.limiteY = Integer.parseInt(m);
+		if(this.limiteX>100 || this.limiteY>100) {
+			throw new Exception("El tamaño de cuadrícula supera los 100");
+		}
 		this.sentido = c;
 	}
 
-	public void getPosicion() {
+	public int[] getPosicion() {
 		System.out.print(posicion[0] + " ");
 		System.out.println(posicion[1]);
+		
+		return this.posicion;
 
 	}
 
@@ -37,10 +42,10 @@ public class Robot {
 	}
 
 	public int[] Avanzar(String q) {
+		
 		int n = Integer.parseInt(q);
 		char s;
 		s = this.sentido;
-		System.out.println("Va a try avanzar:" + q);
 
 		if (this.sentido == 'N') {
 			if (this.posicion[1] + n > this.limiteY) {
