@@ -27,10 +27,15 @@ public class Main {
 		String indicaciones = segundaLinea;
 		for(int i=2; i<=indicaciones.length(); i=i+2) {
 			proximaIndicacion = indicaciones.substring(i-2, i);
-			robot.Avanzar(indicaciones.charAt(1)+"");
+			if(proximaIndicacion.charAt(0) == 'A') {
+				robot.Avanzar(proximaIndicacion.charAt(1)+"");
+			}else {
+				robot.cambiarSentido(proximaIndicacion.charAt(1)+"");
 			}
-		System.out.println(robot.getSentido());
+		}
+		
 		robot.getPosicion();
+		
 	
 		
 	}
